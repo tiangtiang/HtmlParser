@@ -14,12 +14,27 @@ namespace HtmlParser
         private string content;     //html内容
         private List<Tag> list;     //对象列表
 
+        internal List<Tag> List
+        {
+            get
+            {
+                return list;
+            }
+
+            set
+            {
+                list = value;
+            }
+        }
+
         public ReadChars(string content)
         {
             this.content = content;
-            list = new List<Tag>();
+            List = new List<Tag>();
         }
-
+        /// <summary>
+        /// 将html文档解析成单个标签语句
+        /// </summary>
         public void readTags()
         {
             int count = 0;
@@ -41,7 +56,7 @@ namespace HtmlParser
                         x = content[++i];
                         
                     }
-                    list.Add(new Tag() { Content = content.Substring(i - count, count), Type = 3 });
+                    List.Add(new Tag() { Content = content.Substring(i - count, count), Type = 3 });
                     count = 0;
                     i--;
                     continue;
@@ -56,7 +71,7 @@ namespace HtmlParser
                 //Console.WriteLine(node);
                 Tag tag = readOneTag(node);
                 if(tag!=null)
-                    list.Add(tag);
+                    List.Add(tag);
             }
         }
         /// <summary>
@@ -188,12 +203,26 @@ namespace HtmlParser
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            for(int i = 0; i < list.Count; i++)
+            for(int i = 0; i < List.Count; i++)
             {
-                sb.Append(list[i].ToString());
+                sb.Append(List[i].ToString());
                 sb.Append("\n");
             }
             return sb.ToString();
+        }
+
+        public int length()
+        {
+            return list.Count;
+        }
+
+        public Tag get(int i)
+        {
+            return list[i];
+        }
+        public void set(int i, Tag tag)
+        {
+            list[i] = tag;
         }
     }
 }

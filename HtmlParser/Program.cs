@@ -15,6 +15,7 @@ namespace HtmlParser
             string str = new ReadHtml(@"D:\project\htmlparser\test.txt").read(Encoding.UTF8);
             ReadChars rc = new ReadChars(str);
             rc.readTags();
+            new Format().integration(rc);
             File.WriteAllText(@"D:\project\htmlparser\out.txt", rc.ToString());
 
             //Html html = new Html("http://www.chenjian.cc/1534.html");
