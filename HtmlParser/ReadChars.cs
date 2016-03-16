@@ -65,6 +65,11 @@ namespace HtmlParser
                 {
                     count++;
                     x = content[++i];
+                    if (x == '<')
+                    {
+                        List.Add(new Tag() { Content = content.Substring(i - count, count), Type = 3 });
+                        count = 0;
+                    }
                 }
                 string node = content.Substring(i - count, count + 1);
                 count = 0;
@@ -87,7 +92,7 @@ namespace HtmlParser
             while (isBlank(c))
                 c = node[++i];
             if (!isNormalChar(c))           //非法标签
-                return null;
+                return new Tag() { Content = node, Type = 3 };
             if(c == '/')                    //结束标签
             {
                 c = node[++i];

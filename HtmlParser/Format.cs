@@ -22,7 +22,10 @@ namespace HtmlParser
                 else if (tags.get(i).Type == 3)
                 {
                     //将字符串赋值给栈顶元素的文本
-                    stack.Peek().Content += tags.get(i).Content;
+                    if (stack.Count > 0)
+                    {
+                        stack.Peek().Content += tags.get(i).Content;
+                    }
                     tags.set(i, null);
                 }
                 else if (tags.get(i).Type == 1)
@@ -33,17 +36,9 @@ namespace HtmlParser
                     stack.Pop();
                 }
             }
-            delete(tags);
+            DeleteTag.DELETENULL(tags);
         }
 
-        public void delete(ReadChars tags)
-        {
-            List<Tag> list = tags.List;
-            for(int i = list.Count - 1; i >= 0; i--)
-            {
-                if (list[i] == null)
-                    list.RemoveAt(i);
-            }
-        }
+        
     }
 }

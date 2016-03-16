@@ -16,6 +16,7 @@ namespace HtmlParser
             ReadChars rc = new ReadChars(str);
             rc.readTags();
             new Format().integration(rc);
+            new Purification().removeJavaScript(rc);
             File.WriteAllText(@"D:\project\htmlparser\out.txt", rc.ToString());
 
             //Html html = new Html("http://www.chenjian.cc/1534.html");

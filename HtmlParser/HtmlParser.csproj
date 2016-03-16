@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeleteTag.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="Html.cs" />
     <Compile Include="Parser.cs" />
