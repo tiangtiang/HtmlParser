@@ -46,6 +46,7 @@
     <Compile Include="DeleteTag.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="Html.cs" />
+    <Compile Include="MakeTree.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="ReadChars.cs" />
     <Compile Include="ReadHtml.cs" />
     <Compile Include="Tag.cs" />
+    <Compile Include="Tree.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

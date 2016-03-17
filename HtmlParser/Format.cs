@@ -11,7 +11,14 @@ namespace HtmlParser
     /// </summary>
     class Format
     {
-        public void integration(ReadChars tags)
+        public ReadChars rc { set; get; }
+
+        public Format(ReadChars tags)
+        {
+            integration(tags);
+        }
+
+        private void integration(ReadChars tags)
         {
             Stack<Tag> stack = new Stack<Tag>();
             for(int i = 0; i < tags.length(); i++)
@@ -37,8 +44,14 @@ namespace HtmlParser
                 }
             }
             DeleteTag.DELETENULL(tags);
+
+            rc = tags;
         }
 
-        
+        public override string ToString()
+        {
+            return rc.ToString();
+        }
+
     }
 }

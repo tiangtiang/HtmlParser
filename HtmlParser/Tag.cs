@@ -14,7 +14,7 @@ namespace HtmlParser
         private string name;        //标签名
         private Dictionary<string, string> attributes;      //属性列表
         private string content;     //文本内容
-        private Tag parent;         //父标签
+        //private Tag parent;         //父标签
         private int type = -1;           //标签类型， 0：起始标签 1：结束标签 2：完整标签 3：文本内容
 
         public string Name

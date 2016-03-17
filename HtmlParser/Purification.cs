@@ -11,6 +11,17 @@ namespace HtmlParser
     /// </summary>
     class Purification
     {
+        public Format format { set; get; }
+
+        public Purification(Format format)
+        {
+            removeJavaScript(format);
+        }
+        /// <summary>
+        /// 判断是否为无用的标签
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns></returns>
         private int garbageTags(Tag tag)
         {
             string temp = tag.Name.ToLower();
@@ -20,8 +31,13 @@ namespace HtmlParser
                 return 2;
             return -1;
         }
-        public void removeJavaScript(ReadChars tags)
+        /// <summary>
+        /// 删除无用的标签
+        /// </summary>
+        /// <param name="format"></param>
+        private void removeJavaScript(Format format)
         {
+            ReadChars tags = format.rc;
             for(int i= 0; i < tags.length(); i++)
             {
                 Tag tag = tags.get(i);
@@ -39,6 +55,12 @@ namespace HtmlParser
                 }
             }
             DeleteTag.DELETENULL(tags);
+            this.format = format;
+        }
+
+        public override string ToString()
+        {
+            return format.ToString();
         }
     }
 }
